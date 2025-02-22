@@ -1,20 +1,9 @@
+import { siderStyle } from './AppSiderStyle';
 import { Layout, Card, Statistic, List, Typography, Spin, Tag } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import _ from 'lodash';
-import { useContext } from 'react';
-import { CryptoContext } from '../../context/cryptoContext';
 
-const siderStyle = {
-	// textAlign: 'center',
-	// lineHeight: '120px',
-	// color: '#fff',
-	// backgroundColor: '#1677ff',
-	padding: '1rem',
-};
-
-export const AppSider = () => {
-	const { loading, assets } = useContext(CryptoContext);
-
+export const AppSiderlayout = ({ loading, assets }) => {
 	const assetsMap = assets.map(
 		({ id, grow, growPercent, totalAmount, totalProfit, amount }) => (
 			<Card style={{ marginBottom: '1rem' }} key={id}>

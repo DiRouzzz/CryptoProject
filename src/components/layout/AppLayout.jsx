@@ -1,14 +1,14 @@
 import { Layout } from 'antd';
-import { AppHeader } from '../AppHeader/AppHeaderContainer.jsx' 
-import { AppSider } from './AppSider.jsx';
+import { AppHeaderContainer } from '../AppHeader/AppHeaderContainer.jsx' 
+import { AppSiderContainer } from '../AppSider/AppSiderContainer.jsx';
 import { AppContent } from '../AppContent/AppContent.jsx';
 
 export const AppLayout = () => {
 	return (
 		<Layout>
-			<AppHeader />
+			<AppHeaderContainer />
 			<Layout>
-				<AppSider />
+				<AppSiderContainer />
 				<AppContent />
 			</Layout>
 		</Layout>
