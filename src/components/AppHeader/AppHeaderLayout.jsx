@@ -1,6 +1,8 @@
 import { Layout } from 'antd';
-import { Select, Space, Button, Modal, Drawer } from 'antd';
+import { Select, Space, Button } from 'antd';
 import { headerStyle } from './AppHeaderStyle';
+import { AppModal } from './AppModal/AppModal'; 
+import { AppDrawer } from './AppDrawer/AppDrawer';
 
 export const AppHeaderLayout = ({
 	crypto,
@@ -14,6 +16,21 @@ export const AppHeaderLayout = ({
 	onClose,
 	showLoading,
 }) => {
+
+	const propsModal = {
+		coin,
+		showLoading,
+		loadingModal,
+		openModal,
+		setOpenModal,
+	};
+
+	const propsDrawer = {
+		onClose,
+		drawer,
+	};
+
+
 	return (
 		<Layout.Header style={headerStyle}>
 			<Select
@@ -42,23 +59,8 @@ export const AppHeaderLayout = ({
 			<Button type='primary' onClick={() => setDrawer(true)}>
 				Add Asset
 			</Button>
-			<Modal
-				title={<p>Loading Modal</p>}
-				footer={
-					<Button type='primary' onClick={showLoading}>
-						Reload
-					</Button>
-				}
-				loading={loadingModal}
-				open={openModal}
-				onCancel={() => setOpenModal(false)}>
-				<h1>{coin}</h1>
-			</Modal>
-			<Drawer title='Basic Drawer' onClose={onClose} open={drawer}>
-				<p>Some contents...</p>
-				<p>Some contents...</p>
-				<p>Some contents...</p>
-			</Drawer>
+			<AppModal {...propsModal}/>
+			<AppDrawer {...propsDrawer}/>
 		</Layout.Header>
 	);
 };
